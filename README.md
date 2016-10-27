@@ -9,4 +9,6 @@ Manage RDS
   rds_security_group_ids: "{{ hostvars[inventory_hostname][context + '_data'] }}"
   rds_master_username: 'db_user1'
   rds_master_password: 'db_pass_2CH88NG33Eme#^^!'
+  rds_engine: 'postgres'
+  rds_engine_version: '9.5.4'
 ```
