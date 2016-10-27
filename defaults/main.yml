@@ -13,8 +13,4 @@ rds_instance_type: 'db.t2.medium'
 rds_multi_zone: no
 rds_subnet_group: "{{ rds_context | default(rds_environment) }}-rds"
 
-# rds_security_group_ids:
-# rds_master_username:
-# rds_master_password:
-
 rds_debug: "{{ debug|default('False') }}"
