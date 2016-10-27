@@ -7,6 +7,7 @@ rds_command: 'create'
 rds_wait: no
 rds_wait_timeout: 300
 rds_db_engine: 'postgres'
+rds_db_engine_version: "{{ rds_engine_version | mandatory}}"
 rds_db_size: 50
 rds_instance_type: 'db.t2.medium'
 rds_multi_zone: no
