@@ -7,13 +7,10 @@ rds_command: 'create'
 rds_wait: no
 rds_wait_timeout: 300
 rds_db_engine: 'postgres'
+rds_db_engine_version: "{{ rds_engine_version | mandatory}}"
 rds_db_size: 50
 rds_instance_type: 'db.t2.medium'
 rds_multi_zone: no
 rds_subnet_group: "{{ rds_context | default(rds_environment) }}-rds"
-
-# rds_security_group_ids:
-# rds_master_username:
-# rds_master_password:
 
 rds_debug: "{{ debug|default('False') }}"

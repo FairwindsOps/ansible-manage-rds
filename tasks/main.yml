@@ -17,6 +17,7 @@
     vpc_security_groups:  "{{ rds_security_group_ids | mandatory }}"
     instance_name:        "{{ rds_name }}"
     db_engine:            "{{ rds_db_engine }}"
+    engine_version:       "{{ rds_db_engine_version }}"
     size:                 "{{ rds_db_size }}"
     multi_zone:           "{{ rds_multi_zone }}"
     instance_type:        "{{ rds_instance_type }}"
