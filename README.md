@@ -12,3 +12,9 @@ Manage RDS
   rds_engine: 'postgres'
   rds_engine_version: '9.5.4'
 ```
+
+It is also possible to use this role to modify an instance. To do so it is easiest to override settings from the command line:
+
+```shell
+ansible-playbook stack.yml  -e 'rds_command=modify' -e 'apply_immediately=yes'
+```
