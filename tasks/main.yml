@@ -28,3 +28,8 @@
       Stack: "{{ stack_rds_tag_stack | default(omit) }}"
       Layer: "{{ stack_rds_tag_layer | default(omit) }}"
       Context: "{{ rds_context | default(omit) }}"
+  register: result
+
+- name: Set RDS Fact
+  set_fact:
+    "manage_rds_{{ rds_name | replace('-', '_') }}": "{{result}}"
