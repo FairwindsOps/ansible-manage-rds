@@ -28,6 +28,7 @@
       Stack: "{{ stack_rds_tag_stack | default(omit) }}"
       Layer: "{{ stack_rds_tag_layer | default(omit) }}"
       Context: "{{ rds_context | default(omit) }}"
+
   when: rds_command != 'modify'
 
 # modify command can't pass
@@ -48,3 +49,9 @@
     username:             "{{ rds_master_username | mandatory }}"
     password:             "{{ rds_master_password | mandatory }}"
   when: rds_command == 'modify'
+  register: result
+
+- name: Set RDS Fact
+  set_fact:
+    "manage_rds_{{ rds_name | replace('-', '_') }}": "{{result}}"
+
