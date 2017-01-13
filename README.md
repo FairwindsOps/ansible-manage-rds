@@ -13,6 +13,13 @@ Manage RDS
   rds_db_engine_version: "9.5.4"
 ```
 
+It is also possible to use this role to modify an instance. To do so it is easiest to override settings from the command line:
+
+```shell
+ansible-playbook stack.yml  -e 'rds_command=modify' -e 'apply_immediately=yes'
+```
+
 For a list of valid `rds_db_engine` and `rds_db_engine_version` values, run `aws rds describe-db-engine-versions`.
 
 The result of the `rds` resource will be stored in `manage_rds_{{ rds_name | replace('-', '_') }}": "{{result}}`. A `rds_name` of `foo-bar` would be set as `manage_rds_foo_bar`.
+
