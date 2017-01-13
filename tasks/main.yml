@@ -38,8 +38,6 @@
     command:              "{{ rds_command }}"
     wait:                 "{{ rds_wait }}"
     wait_timeout:         "{{ rds_wait_timeout }}"
-    # subnet:               "{{ rds_subnet_group }}"
-    # security_groups:      "{{ rds_security_groups }}"
     vpc_security_groups:  "{{ rds_security_group_ids | mandatory }}"
     instance_name:        "{{ rds_name }}"
     db_engine:            "{{ rds_db_engine }}"
