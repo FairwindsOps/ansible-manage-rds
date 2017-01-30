@@ -28,6 +28,7 @@
       Stack: "{{ stack_rds_tag_stack | default(omit) }}"
       Layer: "{{ stack_rds_tag_layer | default(omit) }}"
       Context: "{{ rds_context | default(omit) }}"
+  register: result
 
   when: rds_command != 'modify'
 
