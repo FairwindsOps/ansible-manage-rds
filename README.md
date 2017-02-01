@@ -23,3 +23,4 @@ For a list of valid `rds_db_engine` and `rds_db_engine_version` values, run `aws
 
 The result of the `rds` resource will be stored in `manage_rds_{{ rds_name | replace('-', '_') }}": "{{result}}`. A `rds_name` of `foo-bar` would be set as `manage_rds_foo_bar`.
 
+Custom parameter groups can be specified with `rds_db_parameter_group`. A default will be picked based on the engine and engine version if not specified.

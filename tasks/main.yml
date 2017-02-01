@@ -13,11 +13,11 @@
     wait:                 "{{ rds_wait }}"
     wait_timeout:         "{{ rds_wait_timeout }}"
     subnet:               "{{ rds_subnet_group }}"
-    # security_groups:      "{{ rds_security_groups }}"
     vpc_security_groups:  "{{ rds_security_group_ids | mandatory }}"
     instance_name:        "{{ rds_name }}"
     db_engine:            "{{ rds_db_engine }}"
     engine_version:       "{{ rds_db_engine_version }}"
+    parameter_group:      "{{ rds_db_parameter_group | default(omit) }}"
     size:                 "{{ rds_db_size }}"
     multi_zone:           "{{ rds_multi_zone }}"
     instance_type:        "{{ rds_instance_type }}"
@@ -28,6 +28,7 @@
       Stack: "{{ stack_rds_tag_stack | default(omit) }}"
       Layer: "{{ stack_rds_tag_layer | default(omit) }}"
       Context: "{{ rds_context | default(omit) }}"
+  register: result
 
   when: rds_command != 'modify'
 
@@ -43,6 +44,7 @@
     instance_name:        "{{ rds_name }}"
     db_engine:            "{{ rds_db_engine }}"
     engine_version:       "{{ rds_db_engine_version }}"
+    parameter_group:      "{{ rds_db_parameter_group | default(omit) }}"
     size:                 "{{ rds_db_size }}"
     multi_zone:           "{{ rds_multi_zone }}"
     instance_type:        "{{ rds_instance_type }}"
