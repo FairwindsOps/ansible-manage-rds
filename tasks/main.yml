@@ -29,7 +29,11 @@
       Layer: "{{ stack_rds_tag_layer | default(omit) }}"
       Context: "{{ rds_context | default(omit) }}"
   register: result
+  when: rds_command != 'modify'
 
+- name: Set RDS Fact
+  set_fact:
+    "manage_rds_{{ rds_name | replace('-', '_') }}": "{{ result }}"
   when: rds_command != 'modify'
 
 # modify command can't pass
@@ -51,9 +55,9 @@
     username:             "{{ rds_master_username | mandatory }}"
     password:             "{{ rds_master_password | mandatory }}"
   when: rds_command == 'modify'
-  register: result
+  register: modify_result
 
 - name: Set RDS Fact
   set_fact:
-    "manage_rds_{{ rds_name | replace('-', '_') }}": "{{result}}"
-
+    "manage_rds_{{ rds_name | replace('-', '_') }}": "{{ modify_result }}"
+  when: rds_command == 'modify'
