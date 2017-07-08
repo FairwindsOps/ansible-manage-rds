@@ -8,7 +8,7 @@
   when: rds_debug
 
 - name: ensure RDS
-  rds:
+  rds_v2:
     command:              "{{ rds_command }}"
     wait:                 "{{ rds_wait }}"
     wait_timeout:         "{{ rds_wait_timeout }}"
@@ -23,6 +23,7 @@
     instance_type:        "{{ rds_instance_type }}"
     username:             "{{ rds_master_username | mandatory }}"
     password:             "{{ rds_master_password | mandatory }}"
+    storage_encrypted:    "{{ rds_storage_encrypted | default(false) }}"
     tags:
       Env:   "{{ rds_environment }}"
       Stack: "{{ stack_rds_tag_stack | default(omit) }}"
@@ -39,6 +40,7 @@
 # modify command can't pass
 # - tags
 # - subnet
+# - storage_encrypted
 - name: ensure RDS
   rds:
     command:              "{{ rds_command }}"
