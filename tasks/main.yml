@@ -14,6 +14,7 @@
     wait_timeout:           "{{ rds_wait_timeout }}"
     db_subnet_group_name:   "{{ rds_subnet_group }}"
     vpc_security_group_ids: "{{ rds_security_group_ids | mandatory }}"
+    region:                 "{{ aws_region | mandatory }}"
     db_instance_identifier: "{{ rds_name }}"
     engine:                 "{{ rds_db_engine }}"
     engine_version:         "{{ rds_db_engine_version }}"
