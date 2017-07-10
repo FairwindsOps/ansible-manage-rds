@@ -12,5 +12,6 @@ rds_db_size: 50
 rds_instance_type: 'db.t2.medium'
 rds_multi_zone: no
 rds_subnet_group: "{{ rds_context | default(rds_environment) }}-rds"
+rds_storage_encrypted: false
 
 rds_debug: "{{ debug|default('False') }}"

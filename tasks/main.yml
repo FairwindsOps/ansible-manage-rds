@@ -9,22 +9,23 @@
 
 - name: ensure RDS
   rds_v2:
-    command:              "{{ rds_command }}"
-    wait:                 "{{ rds_wait }}"
-    wait_timeout:         "{{ rds_wait_timeout }}"
-    subnet:               "{{ rds_subnet_group }}"
-    vpc_security_groups:  "{{ rds_security_group_ids | mandatory }}"
-    instance_name:        "{{ rds_name }}"
-    db_engine:            "{{ rds_db_engine }}"
-    engine_version:       "{{ rds_db_engine_version }}"
-    parameter_group:      "{{ rds_db_parameter_group | default(omit) }}"
-    size:                 "{{ rds_db_size }}"
-    multi_zone:           "{{ rds_multi_zone }}"
-    instance_type:        "{{ rds_instance_type }}"
-    username:             "{{ rds_master_username | mandatory }}"
-    password:             "{{ rds_master_password | mandatory }}"
-    storage_encrypted:    "{{ rds_storage_encrypted | default(false) }}"
+    command:                "{{ rds_command }}"
+    wait:                   "{{ rds_wait }}"
+    wait_timeout:           "{{ rds_wait_timeout }}"
+    db_subnet_group_name:   "{{ rds_subnet_group }}"
+    vpc_security_group_ids: "{{ rds_security_group_ids | mandatory }}"
+    db_instance_identifier: "{{ rds_name }}"
+    engine:                 "{{ rds_db_engine }}"
+    engine_version:         "{{ rds_db_engine_version }}"
+    parameter_group:        "{{ rds_db_parameter_group | default(omit) }}"
+    allocated_storage:      "{{ rds_db_size }}"
+    multi_az:               "{{ rds_multi_zone }}"
+    db_instance_class:      "{{ rds_instance_type }}"
+    master_username:        "{{ rds_master_username | mandatory }}"
+    master_user_password:   "{{ rds_master_password | mandatory }}"
+    storage_encrypted:      "{{ rds_storage_encrypted | default(false) }}"
     tags:
+      Name:  "{{ rds_name }}"
       Env:   "{{ rds_environment }}"
       Stack: "{{ stack_rds_tag_stack | default(omit) }}"
       Layer: "{{ stack_rds_tag_layer | default(omit) }}"
@@ -42,7 +43,7 @@
 # - subnet
 # - storage_encrypted
 - name: ensure RDS
-  rds:
+  rds_v2:
     command:              "{{ rds_command }}"
     wait:                 "{{ rds_wait }}"
     wait_timeout:         "{{ rds_wait_timeout }}"
