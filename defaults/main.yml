@@ -13,4 +13,5 @@ rds_instance_type: 'db.t2.medium'
 rds_multi_zone: no
 rds_subnet_group: "{{ rds_context | default(rds_environment) }}-rds"
 
+k8s_cluster_tag_val: "{{ rds_environment }}"
 rds_debug: "{{ debug|default('False') }}"
