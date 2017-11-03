@@ -25,6 +25,7 @@
     password:             "{{ rds_master_password | mandatory }}"
     tags:
       Env:   "{{ rds_environment }}"
+      KubernetesCluster:  "{{ k8s_cluster_tag_val }}"
       Stack: "{{ stack_rds_tag_stack | default(omit) }}"
       Layer: "{{ stack_rds_tag_layer | default(omit) }}"
       Context: "{{ rds_context | default(omit) }}"
