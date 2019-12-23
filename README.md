@@ -3,7 +3,7 @@ Manage RDS
 
 ## Usage
 ```
-- role: reactiveops.manage-rds
+- role: fairwinds.manage-rds
   rds_environment: "{{ env }}"
   rds_context: "{{ context }}"
   rds_security_group_ids: "{{ hostvars[inventory_hostname][context + '_data'] }}"
